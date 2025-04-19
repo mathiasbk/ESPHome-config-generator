@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/Yamlgenerator.js"></script>
+    <script src="definitions.js"></script>
+    <script src="main.js"></script>
+
+
+    <title>ESPHome configurator</title>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ESphome docs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container-fluid mt-5" style="height: 80vh;">
+        <div class="row gx-5 row-cols-2 row-cols-md-2 g-4 h-100">
+            <!-- Input -->
+            <div class="col" id="inputcontainer">
+                <div class="h2">Input</div>
+                    <div class="mb-3 row p-2">
+                    <label for="deviceName" class="col-sm-2 col-form-label">Device</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="deviceName" class="form-control" aria-label="Device name">
+                    </div>
+                </div>
+                <div class="mb-3 row p-2">
+                    <label for="platformSelect" class="col-sm-2 col-form-label">Platform</label>
+                    <div class="col-sm-10">
+                        <select id="platformSelect" class="form-select" aria-label="select device">
+                            <option selected>Select device</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="mb-3 row p-2">
+                    <label for="boardSelect" class="col-sm-2 col-form-label">Board</label>
+                    <div class="col-sm-10">
+                        <select id="boardSelect" class="form-select" aria-label="select board">
+                            <option selected>Select board</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <label class="col-sm-2 col-form-label">Wifi settings</label>
+                    <div class="col-sm-10">
+                        <div class="input-group mb-3">
+                            <input type="text" class=" input form-control" placeholder="SSID" aria-label="SSID">
+                            <input type="text" class="input form-control" placeholder="wifiPassword" aria-label="wifiPassword">
+                        </div> 
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="loggerCheck">
+                        <label class="form-check-label" for="loggerCheck">
+                            Logger
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="apiCheck" checked>
+                        <label class="form-check-label" for="apiCheck">
+                            apu
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="otaCheck" checked>
+                        <label class="form-check-label" for="otaCheck">
+                            OTA updates
+                        </label>
+                    </div>
+                </div>
+                <button type="button" onclick="generateYaml()" class="btn btn-success">Generate Yaml</button>
+
+            </div>
+
+            <!-- Output-->
+            <div class="col h-100">
+                <div class="h2"> Yaml output</div>
+                <div class="card h-100">
+                    <div class="card-body">
+                      <p class="card-text" id="yamlOutputContainer">Yaml content goes here.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  </body>
+
+
+</html>
