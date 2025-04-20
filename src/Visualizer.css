@@ -1,0 +1,12 @@
+.yaml-key { color: #61afef; }
+.yaml-string { color: #98c379; }
+
+pre.yaml-output {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: monospace;
+  background: #1e1e1e;
+  padding: 1em;
+  border-radius: 5px;
+  color: #ccc;
+}
