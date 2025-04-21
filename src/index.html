@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="Visualizer.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/Devices.js" defer></script>
     <script src="js/Yamlgenerator.js" defer></script>
     <script src="js/Visualizer.js" defer></script>
     <script src="definitions.js" defer></script>
@@ -93,6 +94,11 @@
                         </label>
                     </div>
                 </div>
+                <div id="devicescontainer">
+
+                  
+                </div>
+                <button type="button" onclick="$('#newdevicemodal').modal('show');" class="btn btn-info" data-toggle="modal" data-target="#newdevicemodal">Add a device</button>
                 <button type="button" onclick="generateYaml()" class="btn btn-success">Generate Yaml</button>
 
             </div>
@@ -110,6 +116,47 @@
         </div>
     </div>
 
+  <!-- Add device modal -->
+  <div class="modal fade" id="newdevicemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a new device</h5>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Sensortype</span>
+            </div>
+            <select id="newSensorType" class="form-select" aria-label="select sensortype">
+              <option selected disabled>Select sensortype</option>
+              <option >sensor</option>
+              <option>binary_sensor</option>
+              </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Name</span>
+            </div>
+            <input type="text" id="newDeviceName" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Platform</span>
+            </div>
+            <input type="text" id="newDevicePlatform" class="form-control" placeholder="Platform" aria-label="Platform" aria-describedby="basic-addon1">
+          </div>
+                    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="$('#newdevicemodal').modal('hide');" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="addNewDevice()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
   </body>
 
 

@@ -1,7 +1,10 @@
+let deviceArray = [];
+deviceArray.push(new devices("ESP32", "ESP32", "board"));
+
 $(function() {
     //Populate select
-    console.log(devices);
-    $.each(devices, function(index, device) {
+    //console.log(platforms);
+    $.each(platforms, function(index, device) {
         console.log(device);
         $("#platformSelect").append('<option value="' + device + '">' + device + '</option>');
     });
@@ -44,3 +47,37 @@ function updateYamlVisualization() {
     }
 }
 
+
+function addNewDevice() {
+
+    //Logic
+    const sensorType = $("#newSensorType");
+    const devicename = $("#newDeviceName");
+    const deviceplatform = $("#newDevicePlatform");
+
+    console.log("før: " + deviceArray);
+    const newdevice = new devices(
+        sensorType.val(),
+        devicename.val(), 
+        deviceplatform.val(),
+    );
+
+    deviceArray.push(newdevice);
+
+    console.log("Etter: " + deviceArray);
+
+    //Add elements to GUI
+    const devicecontainer = $("#devicescontainer");
+
+    devicecontainer.after(createDeviceGuiElement(newdevice));
+
+    //Clear and hide modal
+    sensorType.val("Select sensortype");
+    devicename.val("");
+    deviceplatform.val("");
+    $('#newdevicemodal').modal('hide');
+}
+
+function createDeviceGuiElement(deviceObject) {
+    return `Element for ${deviceObject.name}`;
+}

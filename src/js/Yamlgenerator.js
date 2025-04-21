@@ -14,10 +14,10 @@ class yamlGenerator {
             return("Please select a platform");
         }
         
-        let yaml = `esphome:
-        name: ${this.inputvalues.deviceName}
-        platform: ${this.inputvalues.platformSelect}
-        board: ${this.inputvalues.boardSelect}\n`;
+        let yaml = `esphome:\n`;
+        yaml += `  name: ${this.inputvalues.deviceName}\n`;
+        yaml += `  platform: ${this.inputvalues.platformSelect}\n`;
+        yaml += `  board: ${this.inputvalues.boardSelect}\n`;
         
         //Wifi settings
         if(this.inputvalues.SSID) {
@@ -34,12 +34,18 @@ class yamlGenerator {
             yaml += `api:\n`;
         }
         if(this.inputvalues.otaCheck) {
-            yaml += '\n\nota:';
+            yaml += '\n\nota:\n';
             // Optional: Add OTA password
-            yaml += `
-        password: "your_ota_password"`;
+            yaml += `  password: "Ota password\n\n`;
         }
 
+        if(deviceArray.length > 0) {
+            deviceArray.forEach(element => {
+                yaml += `${element.sensorType}:\n`;
+                yaml += `  - platform:${element.platform}\n`;
+                yaml += `    name: ${element.name}\n`;
+            });
+        }
         console.log(yaml);
         return yaml;
     }
