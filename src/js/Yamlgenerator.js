@@ -20,9 +20,9 @@ class yamlGenerator {
         board: ${this.inputvalues.boardSelect}\n`;
         
         //Wifi settings
-        if(this.inputvalues.wifiSSID) {
+        if(this.inputvalues.SSID) {
             yaml += `wifi:\n`;
-            yaml += `  ssid: ${this.inputvalues.wifiSSID}\n`;
+            yaml += `  ssid: ${this.inputvalues.SSID}\n`;
             yaml += `  password: ${this.inputvalues.wifiPassword}\n`;
         }
 
