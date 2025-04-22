@@ -17,7 +17,7 @@ class yamlGenerator {
         let yaml = `esphome:\n`;
         yaml += `  name: ${this.inputvalues.deviceName}\n`;
         yaml += `  platform: ${this.inputvalues.platformSelect}\n`;
-        yaml += `  board: ${this.inputvalues.boardSelect}\n`;
+        yaml += `  board: ${this.inputvalues.mcuSelect}\n`;
         
         //Wifi settings
         if(this.inputvalues.SSID) {

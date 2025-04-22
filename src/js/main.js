@@ -9,8 +9,6 @@ $(function() {
         $("#platformSelect").append('<option value="' + device + '">' + device + '</option>');
     });
 
-    //initiate generator
-
 });
 
 function generateYaml() {
@@ -81,3 +79,37 @@ function addNewDevice() {
 function createDeviceGuiElement(deviceObject) {
     return `Element for ${deviceObject.name}`;
 }
+
+async function populateMcus() {
+    try {
+        //remove old ones
+        $("#mcuSelect").empty();
+        $("#mcuSelect").append("<option selected disabled>Select microcontroller</option>");
+
+        mcuList.forEach(function(board) {
+            // Legg til verdien fra mcuList som value og tekst
+            $("#mcuSelect").append(`<option value="${board}">${board}</option>`);
+        });
+    } catch (error) {
+        console.error("Error loading microcontrollers:", error);
+    }
+}
+
+$("#mcuSelect").on("change", async function() {
+    // Tøm dropdown
+    $("#platformSelect").empty();
+    let selectedMcu = $("#mcuSelect").val();
+
+    try {
+
+        const boards = await platforms();
+
+        boards.forEach(function(board) {
+            if(board.mcu == selectedMcu) {
+                $("#platformSelect").append(`<option value="${board.id}">${board.name}</option>`);
+            }
+        });
+    } catch (error) {
+        console.error("Error loading platforms:", error);
+    }
+});

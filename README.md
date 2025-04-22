@@ -7,6 +7,7 @@ This is a web-based ESPHome configuration tool designed to help users generate Y
 - Input fields for device name, platform, board, WiFi settings, and additional features.
 - Generate YAML configuration based on user inputs.
 - Display the generated YAML in a user-friendly format.
+- Gets board from EspressIF
 
 ## How to Use
 1. Open the `index.html` file in a browser.
@@ -23,7 +24,6 @@ This is a web-based ESPHome configuration tool designed to help users generate Y
 - The project is incomplete and may contain bugs.
 - Error handling and validation need improvement.
 - UI/UX enhancements are pending.
-- YAML is not displed correct
 
 ## Future Improvements
 - Add support for dynamically fetching devices and boards from an API.
